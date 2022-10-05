@@ -1,4 +1,11 @@
-from cohortextractor import patients
+from cohortextractor import patients, codelist_from_csv
+
+ethnicity_codes = codelist_from_csv(
+    "codelists/opensafely-ethnicity.csv",
+    system="ctv3",
+    column="Code",
+    category_column="Grouping_6",
+)
 
 demographic_variables = dict(
     age_band=patients.categorised_as(
@@ -88,5 +95,17 @@ demographic_variables = dict(
             },
         },
     ),
+    # Ethnicity
+    ethnicity=patients.with_these_clinical_events(
+        ethnicity_codes,
+        returning="category",
+        find_last_match_in_period=True,
+        include_date_of_match=False,
+        return_expectations={
+            "category": {
+                "ratios": {"1": 0.2, "2": 0.2, "3": 0.2, "4": 0.2, "5": 0.2}
+            },
+            "incidence": 0.75,
+        },
+    ),
 )
-

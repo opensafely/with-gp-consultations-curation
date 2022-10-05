@@ -27,7 +27,9 @@ dfg.columns = [
     f"{c[0]}_sum"
     if c[1] in ["gp_consultation_count", "population"]
     else f"{c[0]}_{c[1]}"
-    for c in zip(dfg.columns.get_level_values(0), dfg.columns.get_level_values(2))
+    for c in zip(
+        dfg.columns.get_level_values(0), dfg.columns.get_level_values(2)
+    )
 ]
 
 dfg.to_csv("output/tables/overall_summary.csv")
