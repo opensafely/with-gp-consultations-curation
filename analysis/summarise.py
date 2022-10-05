@@ -3,9 +3,7 @@ from glob import glob
 import pandas as pd
 
 # totalise measure tables
-for f in set(glob("output/measure_gp_consultations_by_*.csv")) - set(
-    glob("output/*_[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9].csv")
-):
+for f in glob("output/measure_gp_consultations_by_*[a-z].csv"):
     demographic = Path(f).stem.replace("measure_gp_consultations_by_", "")
     df = pd.read_csv(f)
     df.groupby(demographic)[["gp_consultation_count", "population"]].sum().to_csv(
