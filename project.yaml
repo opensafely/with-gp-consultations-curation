@@ -22,17 +22,17 @@ actions:
   generate_deciles_charts:
     run: deciles-charts:v0.0.33
         --input-files output/measure_*.csv
-        --output-dir output
+        --output-dir output/figures
     needs: [generate_measures]
     outputs:
       moderately_sensitive:
-        deciles_charts: output/deciles_*_*.*
+        deciles_charts: output/figures/deciles_*_*.*
   
   generate_summaries:
     run: python:latest python analysis/summarise.py
     needs: [generate_measures]
     outputs:
       moderately_sensitive:
-        measure_totals: output/measure_*_total.csv
-        overall_summary: output/overall_summary.csv
+        measure_totals: output/tables/measure_*_total.csv
+        overall_summary: output/tables/overall_summary.csv
 
