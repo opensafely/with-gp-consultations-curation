@@ -3,7 +3,7 @@ from glob import glob
 import pandas as pd
 
 # totalise measure tables
-for f in glob("output/measure_gp_consultations_by_*[a-z].csv"):
+for f in glob("output/measure_gp_consultations_by_*[a-z]?.csv"):
     demographic = Path(f).stem.replace("measure_gp_consultations_by_", "")
     df = pd.read_csv(f)
     f_out = Path(f.replace(demographic, f"{demographic}_total"))
