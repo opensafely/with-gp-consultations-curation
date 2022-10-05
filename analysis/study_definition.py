@@ -45,4 +45,3 @@ measures = [
         group_by="patient_id",
     )
 ]
-
