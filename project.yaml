@@ -33,6 +33,6 @@ actions:
     needs: [generate_measures]
     outputs:
       moderately_sensitive:
-        measure_totals: output/tables/measure_*_total.csv
+        measure_totals: output/tables/measure_*_pivot.csv
         overall_summary: output/tables/overall_summary.csv
 
