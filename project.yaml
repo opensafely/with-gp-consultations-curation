@@ -16,7 +16,7 @@ actions:
         --study-definition study_definition
     needs: [generate_study_population]
     outputs:
-      moderately_sensitive:
+      highly_sensitive:
         measure: output/measure_*.csv
 
   generate_deciles_charts:
@@ -27,3 +27,12 @@ actions:
     outputs:
       moderately_sensitive:
         deciles_charts: output/deciles_*_*.*
+  
+  generate_summaries:
+    run: python:latest python analysis/summarise.py
+    needs: [generate_measures]
+    outputs:
+      moderately_sensitive:
+        measure_totals: output/measure_*_total.csv
+        overall_summary: output/overall_summary.csv
+
