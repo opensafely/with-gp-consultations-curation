@@ -4,8 +4,6 @@ model.log
 __pycache__
 .python-version
 /output/*
-!/output/*/.gitkeep
-!/output/.gitkeep
 metadata/*
 venv/
 .DS_Store
